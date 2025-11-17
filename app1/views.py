@@ -57,7 +57,7 @@ def index(request):
 def about(request):
     return render(request,'index.html')
 def buy_perfume(request):
-    men_products=product.objects.filter(category='Men')
+    men_products=Product.objects.filter(category='Men')
     return render(request,'buy-perfume.html',{'men_products':men_products})
 
 def contact(request):
@@ -66,17 +66,17 @@ def contact(request):
         lname=request.POST['lname']
         email=request.POST['email']
         message=request.POST['message']
-        cnt(fname=fname,lname=lname,email=email,message=message).save()
+        Contact(fname=fname,lname=lname,email=email,message=message).save()
         return HttpResponse("Your Message Sent!")
     return render(request,'contact.html')
 def men(request):
-    men_products=product.objects.filter(category='Men')
+    men_products=Product.objects.filter(category='Men')
     return render(request,'men.html',{'men_products': men_products})
 def women(request):
-    women_products=product.objects.filter(category='Women')
+    women_products=Product.objects.filter(category='Women')
     return render(request,'women.html',{'women_products':women_products})
 def exclusive(request):
-    exclusive_products=product.objects.filter(category='Exclusive')
+    exclusive_products=Product.objects.filter(category='Exclusive')
     return render(request,'exclusive.html',{'exclusive_products':exclusive_products})
 def exclusive1(request):
     return render(request,'exclusive1.html')
@@ -87,7 +87,7 @@ def cart(request):
     return render(request,'cart.html',{'cart_items':cart_items,'total_price':total_price})
 @login_required
 def product_details(request, id):
-    x = product.objects.get(id=id)
+    x = Product.objects.get(id=id)
 
     if request.method == 'POST':
         qty = int(request.POST['quantity'])
