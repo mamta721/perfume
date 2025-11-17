@@ -1,24 +1,8 @@
-# Django framework
-Django==4.2.1
-
-# WSGI server for deployment
+Django==4.2.7
 gunicorn==22.0.0
-
-# PostgreSQL database driver (pre-built binary)
 psycopg2-binary==2.9.9
-
-# Image handling library
 Pillow==10.1.0
-
-# Environment variables
 python-dotenv==1.0.0
-
-# Static file serving in production
 whitenoise==6.5.0
-
-# Optional: forms handling
-django-crispy-forms==2.0.3
-
-# Optional: if you use Django storages for S3 or similar
+django-crispy-forms==2.0
 boto3==1.28.0
-
