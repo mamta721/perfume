@@ -33,7 +33,7 @@ def checkout(request):
         # Clear the cart after order
         cart_items.delete()
         
-        return redirect('thankyou')
+        return redirect(thankyou)
     
     return render(request, 'checkout.html', {
         'cart_items': cart_items,
