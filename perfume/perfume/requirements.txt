@@ -21,8 +21,4 @@ django-crispy-forms==2.0.3
 
 # Optional: if you use Django storages for S3 or similar
 boto3==1.28.0
-Django
-gunicorn
-whitenoise
-python-dotenv
-django-cors-headers
+
