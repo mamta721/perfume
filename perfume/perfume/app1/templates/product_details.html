@@ -1,0 +1,299 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Details - INESSA</title>
+  <link rel="stylesheet" href="{% static 'style2.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    .product-details-container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 50px 10%;
+      background: #fffaf7;
+      gap: 50px;
+    }
+
+    .product-image {
+      flex: 1 1 40%;
+    }
+
+    .product-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .product-info-details {
+      flex: 1 1 50%;
+    }
+
+    .product-info-details h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .product-info-details p.description {
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .product-price {
+      font-size: 24px;
+      color: #a460f9;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .add-to-cart-btn {
+      padding: 14px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      background: #a460f9;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .add-to-cart-btn:hover {
+      background: #843ee5;
+    }
+
+    .tags {
+      margin-top: 30px;
+    }
+
+    .tags span {
+      background: #eee;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 13px;
+      margin-right: 8px;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .product-details-container {
+        flex-direction: column;
+        padding: 30px 5%;
+      }
+
+      .product-image, .product-info-details {
+        width: 100%;
+      }
+    }
+    .main-header {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  font-family: 'Playfair Display', serif;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* Layout */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* Left Navigation Links */
+.header-left a,
+.header-right a {
+  margin: 0 0.75rem;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.header-left a:hover,
+.header-right a:hover {
+  color: #b08e6d; /* soft gold accent */
+}
+
+/* Center Logo */
+.header-center {
+  text-align: center;
+}
+
+.brand {
+  font-size: 2rem;
+  letter-spacing: 4px;
+  font-weight: bold;
+  color: #111;
+  margin: 0;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  color: #b08e6d;
+  letter-spacing: 2px;
+  display: block;
+  margin-top: -6px;
+}
+
+/* Icons */
+.header-right i {
+  font-size: 1.2rem;
+  vertical-align: middle;
+  color: #444;
+  transition: color 0.3s ease;
+}
+
+.header-right i:hover {
+  color: #b08e6d;
+}
+
+/* Responsive (optional but recommended) */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-left,
+  .header-right {
+    margin-top: 0.5rem;
+  }
+
+  .header-left a,
+  .header-right a {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+}
+.quantity-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.quantity-container label {
+  font-size: 16px;
+  color: #333;
+}
+
+.quantity-container input[type="number"] {
+  width: 60px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+}
+
+
+  </style>
+</head>
+<body>
+
+<!-- Header (optional reuse from main layout) -->
+<nav class="main-header">
+   <div class="header-container">
+    
+    <div class="header-left">
+      <a href="index">Home</a>
+      <a href="buy_perfume">Buy Perfumes</a>
+      <a href="exclusive">Exclusives</a>
+      <a href="women">Women</a>
+      <a href="men">Men</a>
+    </div>
+
+    <div class="header-center">
+      <h1 class="brand">INESSA</h1>
+      <span class="tagline">PERFUMES</span>
+    </div>
+
+    <div class="header-right">
+      <a href="cart"><i class="fa fa-shopping-basket"></i></a>
+      <a href="about">About</a>
+      <a href="contact">Contact</a>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="product-details-container">
+  <div class="product-image">
+    <img src="{{x.image.url}}" alt="Rose Luxe Perfume">
+  </div>
+
+  <div class="product-info-details">
+    <h1>{{x.name}}</h1>
+    <p class="description">
+      Experience the enchanting blend of fresh roses and warm vanilla. Rose Luxe is a perfect match for those who desire elegance, sophistication, and a long-lasting floral signature.
+    </p>
+    <div class="product-price">Rs {{x.price}}</div>
+    <form action="" method="post">
+      {% csrf_token %}
+      <label for="quantity">Quantity:</label>
+  <input type="number" id="quantity" name="quantity" min="1" value="1">
+  
+  <br><br>
+  <button class="add-to-cart-btn" >Add to Cart</button>
+
+    </form>
+    
+    <div class="tags">
+      <span>Floral</span>
+      <span>Sweet</span>
+      <span>Women's</span>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h2 class="logo">INESSA<br><span class="small">PERFUMES</span></h2>
+      <p>Crafted fragrances that tell your story in scent. Timeless, bold, and unforgettable.</p>
+    </div>
+    <div class="footer-col">
+      <h3>CUSTOMER CARE</h3>
+      <p>We're here for you always.</p>
+      <p><strong>E:</strong> inessa@example.com<br>
+         <strong>P:</strong> +91 99876 54678</p>
+    </div>
+    <div class="footer-col">
+      <h3>FOLLOW US</h3>
+      <ul>
+        <li>Facebook</li>
+        <li>Instagram</li>
+        <li>YouTube</li>
+        <li>Twitter</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>INFORMATION</h3>
+      <ul>
+        <li>Shipping Info</li>
+        <li>Returns</li>
+        <li>FAQs</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 INESSA Perfumes | All Rights Reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>

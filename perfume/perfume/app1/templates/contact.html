@@ -1,0 +1,456 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{%  static 'style2.css' %}"/>
+
+  <style>
+    
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fefefe;
+    }
+
+    nav {
+      background-color: #f4f4f4;
+      padding: 15px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .left a, .right a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .center h1 {
+      font-size: 28px;
+      color: #222;
+    }
+
+    .center h2 {
+      font-size: 14px;
+      color: #666;
+      letter-spacing: 1px;
+    }
+
+
+    .contact-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .contact-section h5 {
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      color: #333;
+      text-transform: uppercase;
+    }
+
+    .contact-section h1 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+    }
+
+    .contact-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 40px;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      padding: 40px 0;
+    }
+
+    .contact-left {
+      /* flex: 1; */
+      min-width: 300px;
+      text-align: left;
+      /* margin-left: 100px; */
+    }
+     .contact-right{
+        /* flex: 1; */
+      min-width: 300px;
+      text-align: left;
+      /* margin-left: 50px; */
+     }
+
+    .contact-left h4 {
+      margin-bottom: 10px;
+      font-size: 1rem;
+      font-weight: normal;
+    }
+
+    .contact-left p {
+      margin: 6px 0;
+      color: #444;
+    }
+
+    .contact-left .social-icons {
+      margin-top: 20px;
+    }
+
+    .contact-left .social-icons a {
+      margin-right: 15px;
+      font-size: 1.2rem;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .contact-right label {
+      display: block;
+      margin: 10px 0 5px;
+      font-size: 0.9rem;
+    }
+
+    .contact-right input[type="text"],
+    .contact-right input[type="email"],
+    .contact-right textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      font-size: 0.95rem;
+      border-radius: 2px;
+    }
+
+    .contact-right input[type="text"]:focus,
+    .contact-right input[type="email"]:focus,
+    .contact-right textarea:focus {
+      outline: none;
+      border-color: #000;
+    }
+
+    .contact-right .half {
+      display: flex;
+      gap: 10px;
+    }
+
+    .contact-right .half input {
+      flex: 1;
+    }
+
+    .contact-right textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .contact-right button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .map-container {
+      margin-top: 50px;
+      width: 100%;
+      height: 400px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .contact-box {
+        flex-direction: column;
+      }
+
+      .contact-right .half {
+        flex-direction: column;
+      }
+    }
+    .footer {
+      background-color: #000;
+      color: #fff;
+      padding: 50px 20px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-col {
+      flex: 1 1 200px;
+      min-width: 200px;
+    }
+
+    .footer-col h2.logo {
+      font-size: 24px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .footer-col h2 .small {
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    .footer-col h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .footer-col p, .footer-col li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #ddd;
+      margin: 0 0 10px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col li:hover {
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+    .main-header {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  font-family: 'Playfair Display', serif;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* Layout */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* Left Navigation Links */
+.header-left a,
+.header-right a {
+  margin: 0 0.75rem;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.header-left a:hover,
+.header-right a:hover {
+  color: #b08e6d; /* soft gold accent */
+}
+
+/* Center Logo */
+.header-center {
+  text-align: center;
+}
+
+.brand {
+  font-size: 2rem;
+  letter-spacing: 4px;
+  font-weight: bold;
+  color: #111;
+  margin: 0;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  color: #b08e6d;
+  letter-spacing: 2px;
+  display: block;
+  margin-top: -6px;
+}
+
+/* Icons */
+.header-right i {
+  font-size: 1.2rem;
+  vertical-align: middle;
+  color: #444;
+  transition: color 0.3s ease;
+}
+
+.header-right i:hover {
+  color: #b08e6d;
+}
+
+/* Responsive (optional but recommended) */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-left,
+  .header-right {
+    margin-top: 0.5rem;
+  }
+
+  .header-left a,
+  .header-right a {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+}
+  </style>
+</head>
+<body>
+   <nav class="main-header">
+  <div class="header-container">
+    
+    <div class="header-left">
+       <a href="index">Home</a>
+      <a href="buy_perfume">Buy Perfumes</a>
+      <a href="exclusive">Exclusives</a>
+      <a href="women">Women</a>
+      <a href="men">Men</a>
+    </div>
+
+    <div class="header-center">
+      <h1 class="brand">INESSA</h1>
+      <span class="tagline">PERFUMES</span>
+    </div>
+
+    <div class="header-right">
+      <a href="cart"><i class="fa fa-shopping-basket"></i></a>
+      <a href="about">About</a>
+      <a href="contact">Contact</a>
+    </div>
+
+  </div>
+</nav>
+
+<section class="contact-section">
+  <h5>GET IN TOUCH</h5>
+  <h1>CONTACT</h1>
+
+  <div class="contact-box">
+    <!-- Left Side -->
+    <div class="contact-left">
+      <h4>CONTACT DETAILS</h4>
+      <p><strong>P:</strong> +1234 567 890</p>
+      <p><strong>E:</strong> contact@info.com</p>
+      <p><strong>A:</strong> 123 Fifth Avenue</p>
+
+      <h4 style="margin-top: 30px;">FOLLOW US</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+
+    <!-- Right Side -->
+    <div class="contact-right">
+      <form mehod="post">
+        {% csrf_token %}
+        <label>Name <span style="color:red;">*</span></label>
+        <div class="half">
+          <input type="text" placeholder="First" required name="fname">
+          <input type="text" placeholder="Last" required name="lname">
+        </div>
+
+        <label>Email <span style="color:red;">*</span></label>
+        <input type="email" placeholder="example@domain.com" required name="email">
+
+        <label>Message <span style="color:red;">*</span></label>
+        <textarea placeholder="Write your message..." required name="message"></textarea>
+
+        <button type="submit">SEND</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13638.85639512806!2d75.6557201!3d31.284002599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1753720141123!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </iframe>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h2 class="logo">INESSA<br><span class="small">PERFUMES</span></h2>
+      <p>Experience luxury through scent. Our fragrances are crafted to define elegance, day and night.</p>
+    </div>
+    <div class="footer-col">
+      <h3>CUSTOMER CARE</h3>
+      <p>Need help? We're always here.</p>
+      <p><strong>E:</strong> inessa@example.com<br>
+         <strong>P:</strong> +91 -9987654678<br>
+         <strong>A:</strong> 123 New Avenue, Jalandhar, Punjab</p>
+    </div>
+    <div class="footer-col">
+      <h3>FOLLOW US</h3>
+      <ul>
+        <li>Facebook</li>
+        <li>Instagram</li>
+        <li>YouTube</li>
+        <li>Pinterest</li>
+        <li>Twitter</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>USEFUL LINKS</h3>
+      <ul>
+        <li>Returns & Exchange</li>
+        <li>FAQ</li>
+        <li>Shipping Info</li>
+        <li>Affiliates</li>
+        <li>Wholesale</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 INESSA Perfumes | All Rights Reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>

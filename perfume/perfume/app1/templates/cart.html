@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart - INESSA</title>
+  <link rel="stylesheet" href="{% static 'style2.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    .cart-container {
+      padding: 50px 10%;
+      background: #fffaf7;
+    }
+
+    h1.cart-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: #222;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    table.cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    }
+
+    .cart-table th, .cart-table td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+      font-size: 15px;
+    }
+
+    .cart-table th {
+      background-color: #f9f9f9;
+      color: #444;
+    }
+
+    .cart-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .cart-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .cart-actions input {
+      width: 50px;
+      text-align: center;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .remove-btn {
+      background: none;
+      border: none;
+      color: #ff4d4d;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .total-container {
+      text-align: right;
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .checkout-btn {
+      margin-top: 20px;
+      float: right;
+      padding: 12px 24px;
+      background: #a460f9;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .checkout-btn:hover {
+      background: #843ee5;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<nav class="main-header">
+  <div class="header-container">
+    <div class="header-left">
+      <a href="index">Home</a>
+      <a href="buy_perfume">Buy Perfumes</a>
+      <a href="exclusive">Exclusives</a>
+      <a href="women">Women</a>
+      <a href="men">Men</a>
+    </div>
+    <div class="header-center">
+      <h1 class="brand">INESSA</h1>
+      <span class="tagline">PERFUMES</span>
+    </div>
+    <div class="header-right">
+      <a href="cart"><i class="fa fa-shopping-basket"></i></a>
+      <a href="about">About</a>
+      <a href="contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Cart Section -->
+<div class="cart-container">
+  <h1 class="cart-title">Your Shopping Cart</h1>
+
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart_items %}
+      <tr>
+        <td><img src="{{ item.product.image.url }}" class="cart-image" alt="{{ item.product.name }}"></td>
+        <td>{{ item.product.name }}</td>
+        <td>Rs {{ item.product.price }}</td>
+        <td class="cart-actions">
+          <!-- <form method="POST" action="">
+            {% csrf_token %} -->
+            <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+            <!-- <td>{{ item.quantity }}</td> -->
+            <!-- <button type="submit"><i class="fa fa-refresh"></i></button> -->
+          <!-- </form> -->
+        </td>
+        <td>Rs {{item.product.price}} </td>
+        <td>
+         
+            <a href="delt/{{item.id}}"><button type="submit" class="remove-btn"><i class="fa fa-trash"></i></button></a>
+          <!-- </form> -->
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6" style="text-align:center; padding: 20px;">Your cart is empty.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="total-container">
+    Total: Rs {{ total_price }}
+  </div>
+
+ <a href="checkouts"> <button class="checkout-btn">Proceed to Checkout</button></a>
+ <a href="index"> <button class="checkout-btn">Continue Shopping</button></a>
+  <br><br>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h2 class="logo">INESSA<br><span class="small">PERFUMES</span></h2>
+      <p>Crafted fragrances that tell your story in scent. Timeless, bold, and unforgettable.</p>
+    </div>
+    <div class="footer-col">
+      <h3>CUSTOMER CARE</h3>
+      <p>We're here for you always.</p>
+      <p><strong>E:</strong> inessa@example.com<br>
+         <strong>P:</strong> +91 99876 54678</p>
+    </div>
+    <div class="footer-col">
+      <h3>FOLLOW US</h3>
+      <ul>
+        <li>Facebook</li>
+        <li>Instagram</li>
+        <li>YouTube</li>
+        <li>Twitter</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>INFORMATION</h3>
+      <ul>
+        <li>Shipping Info</li>
+        <li>Returns</li>
+        <li>FAQs</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 INESSA Perfumes | All Rights Reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>

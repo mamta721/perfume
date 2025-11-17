@@ -1,0 +1,429 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart - INESSA</title>
+  <link rel="stylesheet" href="{% static 'style2.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+   <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fefefe;
+    }
+
+    nav {
+      background-color: #f4f4f4;
+      padding: 15px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .left a, .right a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .center h1 {
+      font-size: 28px;
+      color: #222;
+    }
+
+    .center h2 {
+      font-size: 14px;
+      color: #666;
+      letter-spacing: 1px;
+    }
+
+
+    /* Hero Banner */
+    .about-hero {
+      background: url('static/bg-11.jpg') no-repeat center center/cover;
+      
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+    }
+
+    .overlay-text {
+      color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+    }
+
+    .overlay-text p {
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+
+    .overlay-text h1 {
+      font-size: 3.5rem;
+      margin: 10px 0 0;
+    }
+
+    /* About Text Section */
+    .about-section {
+      padding: 80px 60px;
+      max-width: 1000px;
+      margin: auto;
+      background-color: #fff;
+    }
+
+    .about-section h4 {
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .about-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      line-height: 1.3;
+      color: #111;
+    }
+
+    .about-section p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    /* Mission Section */
+    .mission-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 60px;
+      background: #fafafa;
+    }
+
+    .mission-text {
+      flex: 1;
+      max-width: 500px;
+    }
+
+    .mission-text h4 {
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .mission-text h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #111;
+    }
+
+    .mission-text p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    .mission-image {
+      flex: 1;
+      max-width: 500px;
+      margin-top: 30px;
+    }
+
+    .mission-image img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .mission-section {
+        flex-direction: column;
+        padding: 40px 20px;
+      }
+      .about-section {
+        padding: 40px 20px;
+      }
+      .mission-image {
+        margin-top: 20px;
+      }
+    }
+    .footer {
+      background-color: #000;
+      color: #fff;
+      padding: 50px 20px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-col {
+      flex: 1 1 200px;
+      min-width: 200px;
+    }
+
+    .footer-col h2.logo {
+      font-size: 24px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .footer-col h2 .small {
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    .footer-col h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .footer-col p, .footer-col li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #ddd;
+      margin: 0 0 10px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col li:hover {
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+    .main-header {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  font-family: 'Playfair Display', serif;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* Layout */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* Left Navigation Links */
+.header-left a,
+.header-right a {
+  margin: 0 0.75rem;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.header-left a:hover,
+.header-right a:hover {
+  color: #b08e6d; /* soft gold accent */
+}
+
+/* Center Logo */
+.header-center {
+  text-align: center;
+}
+
+.brand {
+  font-size: 2rem;
+  letter-spacing: 4px;
+  font-weight: bold;
+  color: #111;
+  margin: 0;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  color: #b08e6d;
+  letter-spacing: 2px;
+  display: block;
+  margin-top: -6px;
+}
+
+/* Icons */
+.header-right i {
+  font-size: 1.2rem;
+  vertical-align: middle;
+  color: #444;
+  transition: color 0.3s ease;
+}
+
+.header-right i:hover {
+  color: #b08e6d;
+}
+
+/* Responsive (optional but recommended) */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-left,
+  .header-right {
+    margin-top: 0.5rem;
+  }
+
+  .header-left a,
+  .header-right a {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+}
+  </style>
+</head>
+<body>
+<nav class="main-header">
+  <div class="header-container">
+    <div class="header-left">
+      <a href="index">Home</a>
+      <a href="buy_perfume">Buy Perfumes</a>
+      <a href="exclusive">Exclusives</a>
+      <a href="women">Women</a>
+      <a href="men">Men</a>
+    </div>
+    <div class="header-center">
+      <h1 class="brand">INESSA</h1>
+      <span class="tagline">PERFUMES</span>
+    </div>
+    <div class="header-right">
+      <a href="cart"><i class="fa fa-shopping-basket"></i></a>
+      <a href="about">About</a>
+      <a href="contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Hero Banner -->
+<section class="about-hero">
+  <div class="overlay-text">
+    <p>A FEW WORDS</p>
+    <h1>ABOUT US</h1>
+  </div>
+</section>
+
+<!-- Who We Are -->
+<section class="about-section">
+  <div class="text-container">
+    <h4>WHO WE ARE</h4>
+    <h2>WE ARE THE NY’S LARGEST SPECIALIST FRAGRANCE RETAILER WITH 20 STORES ACROSS THE USA & EUROPE.</h2>
+    <p>
+      Nunc vulputate feugiat tortor ac congue. Nam sit amet urna vitae ligula pellentesque porttitor ut id nisl.
+      Nam laoreet velit ipsum. Suspendisse ullamcorper, odio id faucibus consectetur, elit quam cursus est, nec
+      sagittis purus enim a eros. Sed posuere nec lacus sit amet ullamcorper. Donec ut egestas purus. Duis
+      placerat turpis non urna convallis convallis vitae nec odio.
+    </p>
+    <p>
+      Vestibulum quam turpis, blandit vel fermentum sed, pulvinar in risus. Etiam a mauris sed nunc venenatis
+      vulputate vitae quis tortor. Curabitur gravida accumsan elementum. Praesent ut hendrerit dui, vitae
+      elementum mi.
+    </p>
+  </div>
+</section>
+
+<!-- Mission Section -->
+<section class="mission-section">
+  <div class="mission-text">
+    <h4>WE ARE VISIONARIES</h4>
+    <h2>MISSION</h2>
+    <p>
+      Donec dapibus ullamcorper magna quis posuere. Aenean tincidunt posuere tellus nec dapibus. Aliquam pharetra
+      egestas tellus. Nulla sed quam ante. Curabitur porta pharetra nunc, in maximus ex ultricies a. Donec nibh
+      turpis, eleifend ut tristique ut, aliquam eu urna. Fusce eget ante tellus. Vestibulum.
+    </p>
+  </div>
+  <div class="mission-image">
+    <img src="{% static 'bg-15.jpg' %}" alt="Perfume Bottles">
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h2 class="logo">INESSA<br><span class="small">PERFUMES</span></h2>
+      <p>Experience luxury through scent. Our fragrances are crafted to define elegance, day and night.</p>
+    </div>
+    <div class="footer-col">
+      <h3>CUSTOMER CARE</h3>
+      <p>Need help? We're always here.</p>
+      <p><strong>E:</strong> inessa@example.com<br>
+         <strong>P:</strong> +91 -9987654678<br>
+         <strong>A:</strong> 123 New Avenue, Jalandhar, Punjab</p>
+    </div>
+    <div class="footer-col">
+      <h3>FOLLOW US</h3>
+      <ul>
+        <li>Facebook</li>
+        <li>Instagram</li>
+        <li>YouTube</li>
+        <li>Pinterest</li>
+        <li>Twitter</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>USEFUL LINKS</h3>
+      <ul>
+        <li>Returns & Exchange</li>
+        <li>FAQ</li>
+        <li>Shipping Info</li>
+        <li>Affiliates</li>
+        <li>Wholesale</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 INESSA Perfumes | All Rights Reserved</p>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

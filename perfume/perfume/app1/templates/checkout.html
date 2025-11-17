@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout - INESSA</title>
+  <link rel="stylesheet" href="{% static 'style2.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    .checkout-container {
+      padding: 50px 10%;
+      background: #fffaf7;
+    }
+
+    h1.checkout-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: #222;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .checkout-form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #555;
+    }
+
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .order-summary {
+      margin-top: 30px;
+      font-size: 16px;
+    }
+
+    .order-summary p {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .place-order-btn {
+      margin-top: 20px;
+      background: #a460f9;
+      color: white;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      float: right;
+    }
+
+    .place-order-btn:hover {
+      background: #843ee5;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<nav class="main-header">
+  <div class="header-container">
+    <div class="header-left">
+      <a href="index">Home</a>
+      <a href="buy_perfume">Buy Perfumes</a>
+      <a href="exclusive">Exclusives</a>
+      <a href="women">Women</a>
+      <a href="men">Men</a>
+    </div>
+    <div class="header-center">
+      <h1 class="brand">INESSA</h1>
+      <span class="tagline">PERFUMES</span>
+    </div>
+    <div class="header-right">
+      <a href="cart"><i class="fa fa-shopping-basket"></i></a>
+      <a href="about">About</a>
+      <a href="contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Checkout Section -->
+<div class="checkout-container">
+  <h1 class="checkout-title">Checkout</h1>
+
+  <form method="POST" action="">
+    {% csrf_token %}
+    <div class="checkout-form">
+      <div class="form-group">
+        <label for="full_name">Full Name</label>
+        <input type="text" name="full_name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" name="phone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Shipping Address</label>
+        <textarea name="address" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="payment">Payment Method</label>
+        <select name="payment_method" required>
+          <option value="cod">Cash on Delivery</option>
+          <option value="online">Online Payment</option>
+        </select>
+      </div>
+
+      <!-- <div class="order-summary">
+        <p><strong>Total Items:</strong> {{ cart_items|length }}</p>
+        <p><strong>Total Amount:</strong> Rs {{ total_price }}</p>
+      </div> -->
+
+      <button type="submit" class="place-order-btn">Place Order</button>
+    </div>
+  </form>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h2 class="logo">INESSA<br><span class="small">PERFUMES</span></h2>
+      <p>Crafted fragrances that tell your story in scent. Timeless, bold, and unforgettable.</p>
+    </div>
+    <div class="footer-col">
+      <h3>CUSTOMER CARE</h3>
+      <p>We're here for you always.</p>
+      <p><strong>E:</strong> inessa@example.com<br>
+        <strong>P:</strong> +91 99876 54678</p>
+    </div>
+    <div class="footer-col">
+      <h3>FOLLOW US</h3>
+      <ul>
+        <li>Facebook</li>
+        <li>Instagram</li>
+        <li>YouTube</li>
+        <li>Twitter</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>INFORMATION</h3>
+      <ul>
+        <li>Shipping Info</li>
+        <li>Returns</li>
+        <li>FAQs</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 INESSA Perfumes | All Rights Reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>

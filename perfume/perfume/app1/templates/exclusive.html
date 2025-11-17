@@ -1,0 +1,325 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exclusive Perfumes - INESSA</title>
+  <link rel="stylesheet" href="{% static 'style2.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{%  static 'style2.css' %}"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fefefe;
+    }
+    nav {
+  background-color: #f4f4f4;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.left a,
+.right a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  font-size: 28px;
+  color: #222;
+}
+
+.center h2 {
+  font-size: 14px;
+  color: #666;
+  letter-spacing: 1px;
+}
+
+    .exclusive-section {
+      padding: 60px 40px;
+      text-align: center;
+      background: #fff;
+    }
+
+    .exclusive-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .exclusive-section p {
+      font-size: 1.1em;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .exclusive-cards {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #f9f9f9;
+      border-radius: 16px;
+      width: 280px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      font-size: 1.2em;
+      margin: 10px 0 5px;
+    }
+
+    .card p {
+      font-size: 0.95em;
+      color: #444;
+    }
+
+    .price {
+      color: #000;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .add-btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 16px;
+      background: #6a0dad;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.95em;
+      transition: background 0.3s ease;
+    }
+
+    .add-btn:hover {
+      background: #5a0ca0;
+    }
+    .main-header {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  font-family: 'Playfair Display', serif;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* Layout */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* Left Navigation Links */
+.header-left a,
+.header-right a {
+  margin: 0 0.75rem;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.header-left a:hover,
+.header-right a:hover {
+  color: #b08e6d; /* soft gold accent */
+}
+
+/* Center Logo */
+.header-center {
+  text-align: center;
+}
+
+.brand {
+  font-size: 2rem;
+  letter-spacing: 4px;
+  font-weight: bold;
+  color: #111;
+  margin: 0;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  color: #b08e6d;
+  letter-spacing: 2px;
+  display: block;
+  margin-top: -6px;
+}
+
+/* Icons */
+.header-right i {
+  font-size: 1.2rem;
+  vertical-align: middle;
+  color: #444;
+  transition: color 0.3s ease;
+}
+
+.header-right i:hover {
+  color: #b08e6d;
+}
+
+/* Responsive (optional but recommended) */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-left,
+  .header-right {
+    margin-top: 0.5rem;
+  }
+
+  .header-left a,
+  .header-right a {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+}
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+ <nav class="main-header">
+  <div class="header-container">
+    
+    <div class="header-left">
+       <a href="index">Home</a>
+      <a href="buy_perfume">Buy Perfumes</a>
+      <a href="exclusive">Exclusives</a>
+      <a href="women">Women</a>
+      <a href="men">Men</a>
+    </div>
+
+    <div class="header-center">
+      <h1 class="brand">INESSA</h1>
+      <span class="tagline">PERFUMES</span>
+    </div>
+
+    <div class="header-right">
+      <a href="cart"><i class="fa fa-shopping-basket"></i></a>
+      <a href="about">About</a>
+      <a href="contact">Contact</a>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Exclusive Products Section -->
+<section class="exclusive-section">
+  <h2>Exclusive Essentials</h2>
+  <p>Discover the rarest blends curated for those who demand elegance in every detail.</p>
+
+  <div class="exclusive-cards">
+    {% for i in exclusive_products %}
+    <div class="card">
+      <img src="{{i.image.url}}" alt="Gabrielle Chanel Eau De">
+      <h3>{{i.name}}</h3>
+      <!-- <p>Luxurious floral blend in a travel set. Perfectly balanced for elegance on the go.</p> -->
+      <div class="price">₹{{i.price}}</div>
+     
+      <a href="product_details/{{i.id}}"> <button class="add-btn">Add to Cart</button></a>
+    </div>
+{% endfor %}
+    <!-- <div class="card">
+      <img src="{% static '956.jpeg' %}" alt="Fragrance Primer">
+      <h3>Gabrielle Chanel Primer</h3>
+      <p>Prepares your skin to enhance longevity and depth of any fragrance.</p>
+      <div class="price">₹11,600</div>
+      <button class="add-btn">Add to Cart</button>
+    </div> -->
+<!--  -->
+  </div>
+</section>
+    <!-- <div class="card">
+      <img src="{% static 'Product-006-600x600.jpg' %}" alt="Gabrielle Chanel Hair Mist">
+      <h3>Gabrielle Chanel Hair Mist</h3>
+      <p>Delicate mist that leaves your hair scented with floral radiance.</p>
+      <div class="price">₹6,900</div>
+      <button class="add-btn">Add to Cart</button>
+    </div> -->
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h2 class="logo">INESSA<br><span class="small">PERFUMES</span></h2>
+      <p>Experience luxury through scent. Our fragrances are crafted to define elegance, day and night.</p>
+    </div>
+    <div class="footer-col">
+      <h3>CUSTOMER CARE</h3>
+      <p>Need help? We're always here.</p>
+      <p><strong>E:</strong> inessa@example.com<br>
+         <strong>P:</strong> +91 -9987654678<br>
+         <strong>A:</strong> 123 New Avenue, Jalandhar, Punjab</p>
+    </div>
+    <div class="footer-col">
+      <h3>FOLLOW US</h3>
+      <ul>
+        <li>Facebook</li>
+        <li>Instagram</li>
+        <li>YouTube</li>
+        <li>Pinterest</li>
+        <li>Twitter</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>USEFUL LINKS</h3>
+      <ul>
+        <li>Returns & Exchange</li>
+        <li>FAQ</li>
+        <li>Shipping Info</li>
+        <li>Affiliates</li>
+        <li>Wholesale</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 INESSA Perfumes | All Rights Reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>
