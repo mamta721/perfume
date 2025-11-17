@@ -21,8 +21,8 @@ django-crispy-forms==2.0.3
 
 # Optional: if you use Django storages for S3 or similar
 boto3==1.28.0
-
-# Make sure pip, setuptools, and wheel are up to date
-pip==25.3
-setuptools==68.0.0
-wheel==0.41.0
+Django
+gunicorn
+whitenoise
+python-dotenv
+django-cors-headers
