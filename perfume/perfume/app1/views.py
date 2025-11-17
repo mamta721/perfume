@@ -1,10 +1,56 @@
-from django.shortcuts import render,redirect,HttpResponse
-from.models import*
+from django.shortcuts import render, redirect, HttpResponse
+from .models import *  # Use proper imports
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth.models import User
-# Create your views here.
+
+def checkout(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+        
+    cart_items = CartItem.objects.filter(user=request.user)
+    total_price = sum(item.product.price * item.quantity for item in cart_items)
+    
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        payment_method = request.POST.get('payment_method')
+        
+        # Create order
+        order = Order.objects.create(
+            full_name=full_name,
+            email=email,
+            phone=phone,
+            address=address,
+            payment_method=payment_method,
+            total_items=cart_items.count(),
+            total_amount=total_price
+        )
+        
+        # Clear the cart after order
+        cart_items.delete()
+        
+        return redirect('thankyou')
+    
+    return render(request, 'checkout.html', {
+        'cart_items': cart_items,
+        'total_price': total_price
+    })
+
+def contact(request):
+    if request.method == 'POST':
+        fname = request.POST['fname']
+        lname = request.POST['lname']
+        email = request.POST['email']
+        message = request.POST['message']
+        Contact.objects.create(fname=fname, lname=lname, email=email, message=message)  # Fixed model name
+        return HttpResponse("Your Message Sent!")
+    return render(request, 'contact.html')
+
+# Keep your other views as they are...
 def index(request):
     return render(request,'index.html')
 
@@ -102,31 +148,3 @@ def thankyou(request):
         # Process order (save, clear cart, email, etc.)
         return redirect('thankyou')  # URL name for thankyou page
     return render(request,'thankyou.html')
-
-def checkout(request):
-    if request.method=='POST':
-        full_name = request.POST.get('full_name')
-        email = request.POST.get('email')
-        phone = request.POST.get('phone')
-        address = request.POST.get('address')
-        payment_method = request.POST.get('payment_method')
-        cart_items = request.session.get('cart_items', [])
-        total_price = request.session.get('total_price', 0)
-        
-        order = Order.objects.create(
-            full_name=full_name,
-            email=email,
-            phone=phone,
-            address=address,
-            payment_method=payment_method,
-            total_items=len(cart_items),
-            total_amount=total_price
-        )
-        
-        # You might want to clear the cart after placing order
-        request.session['cart_items'] = []
-        request.session['total_price'] = 0
-        
-        # Redirect to a success page or order summary
-        return redirect(thankyou)
-    return render(request,'checkout.html')
